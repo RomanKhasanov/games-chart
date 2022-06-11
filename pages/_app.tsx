@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import '../styles/globals.css'
 import styles from '../styles/Home.module.css'
+import { NextUIProvider } from '@nextui-org/react';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -13,7 +14,7 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>
+      <header className={styles.header}>
         <Link href="/">
             <a>List</a>
         </Link>
@@ -24,7 +25,9 @@ function MyApp({ Component, pageProps }) {
       </header>
 
       <main className={styles.main}>
-        <Component {...pageProps} />
+        <NextUIProvider>
+          <Component {...pageProps} />
+        </NextUIProvider>
       </main>
 
       <footer className={styles.footer}>

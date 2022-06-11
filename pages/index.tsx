@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react'
-
-const sortFunc = function(a, b) {
-  if(a.name < b.name) { return -1; }
-  if(a.name > b.name) { return 1; }
-  return 0;
-}
+import { ListResponse } from './api/models/ListResponse';
+import { sortFunc } from '../src/functions/sort'
+import { MyTable } from '../src/components/MyTable';
 
 export default function Home() {
-  const [data, setData] = useState([])
+  const [data, setData] = useState<ListResponse[]>([])
   const [isLoading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -24,13 +21,7 @@ export default function Home() {
 
   return (
     <div>
-      <ul>
-        {data.map((x, index) => (
-          <li key={index}>
-            {x.name}
-          </li>
-        ))}
-      </ul>
+      <MyTable list={data} />
     </div>
   )
 }
