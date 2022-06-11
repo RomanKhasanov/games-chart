@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react'
 
+const sortFunc = function(a, b) {
+  if(a.name < b.name) { return -1; }
+  if(a.name > b.name) { return 1; }
+  return 0;
+}
+
 export default function Home() {
   const [data, setData] = useState([])
   const [isLoading, setLoading] = useState(false)
@@ -9,7 +15,7 @@ export default function Home() {
     fetch('api/list')
       .then((res) => res.json())
       .then((data) => {
-        setData(data)
+        setData(data.sort(sortFunc))
         setLoading(false)
       })
   }, [])
