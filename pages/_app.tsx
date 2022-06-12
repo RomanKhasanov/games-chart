@@ -4,6 +4,11 @@ import Link from 'next/link'
 import '../styles/globals.css'
 import styles from '../styles/Home.module.css'
 import { NextUIProvider } from '@nextui-org/react';
+// import { createTheme } from "@nextui-org/react"
+
+// const darkTheme = createTheme({
+//   type: 'dark',
+// });
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -15,13 +20,16 @@ function MyApp({ Component, pageProps }) {
       </Head>
 
       <header className={styles.header}>
-        <Link href="/">
-            <a>List</a>
-        </Link>
-        {" "}
-        <Link href="/chart">
-            <a>Chart</a>
-        </Link>
+        <div>
+          <Link href="/">
+              <a>List</a>
+          </Link>
+          {" "}
+          <Link href="/chart">
+              <a>Chart</a>
+          </Link>
+        </div>
+        
       </header>
 
       <main className={styles.main}>
